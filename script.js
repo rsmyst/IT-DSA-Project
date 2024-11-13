@@ -196,7 +196,6 @@ function clearQueue() {
   renderQueue();
 }
 
-function updateQueue() {
 function renderQueue() {
   const queueContainer = document.getElementById("orderTree");
   const orders = orderTree.inOrderTraversal();
