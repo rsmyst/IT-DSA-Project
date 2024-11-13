@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Court Token System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Food Court Token System</h1>
+      <div class="order-form">
+        <input type="text" id="orderName" placeholder="Enter Order Name" />
+        <select id="orderCategory">
+          <option value="1">Light Beverage - Immediate</option>
+          <option value="3">Snack - Quick</option>
+          <option value="5">Beverage - Moderate</option>
+          <option value="7">Simple Meal - Moderate-Long</option>
+          <option value="10">Heavy Lunch Order - Long</option>
+        </select>
+        <div class="buttons">
+          <button onclick="addOrder()">Add Order</button>
+          <button onclick="dequeueOrder()">Dequeue Order</button>
+          <button onclick="clearQueue()">Clear Queue</button>
+        </div>
+      </div>
+      <h2>Order Queue</h2>
+      <div id="orderQueue"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  background-image: linear-gradient(135deg, #f0f8ff 30%, #e0f2fe 100%);
+}
+.container {
+  max-width: 500px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+h1 {
+  color: #1db954;
+  margin-bottom: 20px;
+}
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.order-form input,
+.order-form select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+.order-form select:hover {
+  background-color: #e0f7ec;
+}
+.order-form select:focus {
+  outline: none;
+  border-color: #1db954;
+}
+.order-form .buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.order-form button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.order-form button:nth-child(1) {
+  background-color: #1db954;
+}
+.order-form button:nth-child(2) {
+  background-color: #1db954cc;
+}
+.order-form button:nth-child(3) {
+  background-color: #1db954b3;
+}
+.order-form button:hover {
+  background-color: #1db954;
+  transform: scale(1.05);
+}
+.order-form button:active {
+  transform: scale(0.95);
+}
+#orderQueue {
+  margin-top: 20px;
+}
+.order-item {
+  padding: 10px;
+  background-color: #d1e7dd;
+  border-left: 5px solid #1db954;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-priority {
+  font-size: 14px;
+  color: #6c757d;
+}
