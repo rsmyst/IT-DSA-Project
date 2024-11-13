@@ -17,19 +17,11 @@ The Food Court Token System allows users to add, dequeue, and clear food orders.
 
 ### Data Structures
 
-- **Array**: The 
-
-orderQueue
-
- is implemented as an array to store the list of orders.
+- **Array**: The `orderQueue` is implemented as an array to store the list of orders.
 
 ### Algorithms
 
-- **Sorting**: The 
-
-updateQueue
-
- function sorts the orders based on preparation time and timestamp using a custom comparator function.
+- **Sorting**: The `updateQueue` function sorts the orders based on preparation time and timestamp using a custom comparator function.
 - **Priority Queue**: The sorting mechanism effectively implements a priority queue, where orders with shorter preparation times and earlier timestamps are given higher priority.
 
 ## Code Overview
@@ -40,26 +32,10 @@ script.js
 
 
 
-- **
-
-addOrder
-
-**: Adds a new order to the queue and updates the display.
-- **
-
-dequeueOrder
-
-**: Removes the highest priority order from the queue and updates the display.
-- **
-
-clearQueue
-
-**: Clears all orders from the queue and updates the display.
-- **
-
-updateQueue
-
-**: Sorts the orders and updates the display.
+- **`addOrder`**: Adds a new order to the queue and updates the display.
+- **`dequeueOrder`**: Removes the highest priority order from the queue and updates the display.
+- **`clearQueue`**: Clears all orders from the queue and updates the display.
+- **`updateQueue`**: Sorts the orders and updates the display.
 
 ### 
 
