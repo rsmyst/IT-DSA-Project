@@ -55,7 +55,7 @@ index.html
 
 ## Deployment
 
-The application is deployed at [https://fctoken.netlify.app/](https://fctoken1.netlify.app/).
+The application is deployed at [https://fctoken1.netlify.app/](https://fctoken1.netlify.app/).
 
 ## Usage
 
