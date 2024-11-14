@@ -1,12 +1,13 @@
 class Order {
-  constructor(name, category, prepTime, timestamp) {
+  constructor(id, name, category, prepTime, timestamp) {
+    this.id = id;
     this.name = name;
     this.category = category;
     this.prepTime = prepTime;
     this.timestamp = timestamp;
+    this.originalPrepTime = prepTime;
   }
 
-  // Comparator based on preparation time and timestamp
   compareTo(other) {
     if (this.prepTime !== other.prepTime) {
       return this.prepTime - other.prepTime;
@@ -29,12 +30,10 @@ class AVLTree {
     this.root = null;
   }
 
-  // Helper to get the height of a node
   height(node) {
     return node ? node.height : 0;
   }
 
-  // Right rotation for balancing
   rotateRight(y) {
     const x = y.left;
     const T2 = x.right;
@@ -45,7 +44,6 @@ class AVLTree {
     return x;
   }
 
-  // Left rotation for balancing
   rotateLeft(x) {
     const y = x.right;
     const T2 = y.left;
@@ -56,12 +54,10 @@ class AVLTree {
     return y;
   }
 
-  // Get the balance factor of a node
   getBalance(node) {
     return node ? this.height(node.left) - this.height(node.right) : 0;
   }
 
-  // Insert an order into the AVL Tree
   insert(node, order) {
     if (!node) return new AVLNode(order);
 
@@ -75,7 +71,6 @@ class AVLTree {
     return this.balance(node);
   }
 
-  // Balance the AVL Tree after insertion or deletion
   balance(node) {
     const balanceFactor = this.getBalance(node);
 
@@ -100,14 +95,12 @@ class AVLTree {
     return node;
   }
 
-  // Find the node with the smallest value (highest priority order)
   findMinNode(node) {
     let current = node;
     while (current.left !== null) current = current.left;
     return current;
   }
 
-  // Remove an order from the AVL Tree
   delete(node, order) {
     if (!node) return node;
 
@@ -131,7 +124,6 @@ class AVLTree {
     return this.balance(node);
   }
 
-  // Inorder traversal to display orders
   inorderTraversal(node, orders = []) {
     if (node) {
       this.inorderTraversal(node.left, orders);
@@ -144,6 +136,10 @@ class AVLTree {
 
 const orderQueue = new AVLTree();
 
+function generateUniqueID() {
+  return Math.floor(100 + Math.random() * 900);
+}
+
 function addOrder() {
   const orderName = document.getElementById("orderName").value.trim();
   const orderCategory = document.getElementById("orderCategory");
@@ -155,7 +151,14 @@ function addOrder() {
     return;
   }
 
-  const newOrder = new Order(orderName, categoryText, preparationTime, Date.now());
+  const newOrder = new Order(
+    generateUniqueID(),
+    orderName,
+    categoryText,
+    preparationTime,
+    Date.now()
+  );
+
   orderQueue.root = orderQueue.insert(orderQueue.root, newOrder);
   updateQueue();
   document.getElementById("orderName").value = "";
@@ -177,6 +180,23 @@ function clearQueue() {
   updateQueue();
 }
 
+function ageOrders() {
+  function ageNode(node) {
+    if (!node) return;
+
+    if (node.order.prepTime > 1) {
+      node.order.prepTime -= 1;
+    }
+    ageNode(node.left);
+    ageNode(node.right);
+  }
+
+  ageNode(orderQueue.root);
+  updateQueue();
+}
+
+setInterval(ageOrders, 15000);
+
 function updateQueue() {
   const orders = orderQueue.inorderTraversal(orderQueue.root);
   const queueContainer = document.getElementById("orderQueue");
@@ -186,7 +206,7 @@ function updateQueue() {
     const orderDiv = document.createElement("div");
     orderDiv.className = "order-item";
     orderDiv.innerHTML = `
-            <span>${order.name} - <em>${order.category}</em></span>
+            <span>ID: ${order.id} - ${order.name} - <em>${order.category}</em></span>
             <span class="order-priority">Prep Time: ${order.prepTime}</span>
         `;
     queueContainer.appendChild(orderDiv);
